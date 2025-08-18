@@ -21,3 +21,13 @@ def mask_account_card(card_inf: str) -> str:
 
     return ''
 
+
+def get_date(date: str) -> str:
+    """
+    принимает на вход строку с датой в формате "2024-03-11T02:26:18.671407"
+    :param date:
+    :return: возвращает строку с датой в формате "ДД.ММ.ГГГГ"
+    """
+
+    return f'{date[8:10]}.{date[5:7]}.{date[:4]}'
+
