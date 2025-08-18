@@ -1,0 +1,23 @@
+from masks import get_mask_account
+from masks import get_mask_card_number
+
+
+def mask_account_card(card_inf: str) -> str:
+    """
+    обрабатывает информацию как о картах, так и о счетах.
+    :param card_inf: строка, содержащая тип и номер карты или счета.
+    :return: возвращает строку с замаскированным номером.
+    """
+
+    card_data = card_inf.split()
+    if card_data[1].isdigit() and len(card_data[1]) > 16:
+        return f'Счет {get_mask_account(int(card_data[1]))}'
+
+    if card_data[1].isdigit():
+        return f'{card_data[0]} {get_mask_card_number(int(card_data[1]))}'
+
+    if card_data[2].isdigit():
+        return f'{card_data[0]} {card_data[1]} {get_mask_card_number(int(card_data[2]))}'
+
+    return ''
+
