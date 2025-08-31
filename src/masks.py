@@ -11,7 +11,7 @@ def get_mask_card_number(card_number: int) -> str:
     return 'Некорректный ввод'
 
 
-def get_mask_account(account_number: int) -> str:
+def get_mask_account_number(account_number: int) -> str:
     """
     Маскирует номер счёта
     :rtype: str
