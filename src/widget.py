@@ -1,5 +1,4 @@
-from masks import get_mask_account
-from masks import get_mask_card_number
+from masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(card_inf: str) -> str:
@@ -11,15 +10,15 @@ def mask_account_card(card_inf: str) -> str:
 
     card_data = card_inf.split()
     if card_data[1].isdigit() and len(card_data[1]) > 16:
-        return f'Счет {get_mask_account(int(card_data[1]))}'
+        return f"Счет {get_mask_account(int(card_data[1]))}"
 
     if card_data[1].isdigit():
-        return f'{card_data[0]} {get_mask_card_number(int(card_data[1]))}'
+        return f"{card_data[0]} {get_mask_card_number(int(card_data[1]))}"
 
     if card_data[2].isdigit():
-        return f'{card_data[0]} {card_data[1]} {get_mask_card_number(int(card_data[2]))}'
+        return f"{card_data[0]} {card_data[1]} {get_mask_card_number(int(card_data[2]))}"
 
-    return ''
+    return ""
 
 
 def get_date(date: str) -> str:
@@ -29,5 +28,4 @@ def get_date(date: str) -> str:
     :return: возвращает строку с датой в формате "ДД.ММ.ГГГГ"
     """
 
-    return f'{date[8:10]}.{date[5:7]}.{date[:4]}'
-
+    return f"{date[8:10]}.{date[5:7]}.{date[:4]}"
