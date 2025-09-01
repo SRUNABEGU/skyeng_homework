@@ -37,3 +37,12 @@ def test_unexpected_input(value, expected):
 
 def test_data(date_template):
     assert get_date(date_template) == '11.03.2024'
+
+@pytest.mark.parametrize('value, expected', [
+    ('2026-12-31T23:59:59.999999', '31.12.2026'),
+    ('2025-12-31T23:59:59.999999', '31.12.2025'),
+    ('2025-02-29T12:00:00.000000', '29.02.2025'),
+    ('2025-13-01T00:00:00.000000', 'Некорректный ввод'),
+])
+def test_unusual_data(value, expected):
+    assert get_date(value) == expected

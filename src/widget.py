@@ -28,4 +28,10 @@ def get_date(date: str) -> str:
     :return: возвращает строку с датой в формате "ДД.ММ.ГГГГ"
     """
 
-    return f"{date[8:10]}.{date[5:7]}.{date[:4]}"
+    day = date[8:10]
+    month = date[5:7]
+    year = date[:4]
+
+    if 1 <= int(day) <= 31 and 1 <= int(month) <= 12 and 1 <= int(year) <= 9999:
+        return f'{day}.{month}.{year}'
+    return 'Некорректный ввод'
