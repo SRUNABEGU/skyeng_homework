@@ -1,7 +1,6 @@
 import pytest
 
 from src.widget import mask_account_card, get_date
-from tests.conftest import maestro_template
 
 
 def test_maestro_card_template(maestro_template):
