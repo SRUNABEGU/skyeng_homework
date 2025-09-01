@@ -1,0 +1,40 @@
+import pytest
+
+from src.widget import mask_account_card, get_date
+from tests.conftest import maestro_template
+
+
+def test_maestro_card_template(maestro_template):
+    assert mask_account_card(maestro_template) == 'Maestro 1596 83** **** 5199'
+
+
+def test_mastercard_template(mastercard_template):
+    assert mask_account_card(mastercard_template) == 'MasterCard 7158 30** **** 6758'
+
+
+def test_visa_classic_template(visa_classic_template):
+    assert mask_account_card(visa_classic_template) == 'Visa Classic 6831 98** **** 7658'
+
+
+def test_visa_platinum_template(visa_platinum_template):
+    assert mask_account_card(visa_platinum_template) == 'Visa Platinum 8990 92** **** 5229'
+
+
+def test_visa_gold_template(visa_gold_template):
+    assert mask_account_card(visa_gold_template) == 'Visa Gold 5999 41** **** 6353'
+
+
+def test_account_template(account_template):
+    assert mask_account_card(account_template) == 'Счет **4305'
+
+
+@pytest.mark.parametrize('value, expected', [
+    ('Счет 736541084301358743055', 'Некорректный ввод'),
+    ('', 'Некорректный ввод'),
+])
+def test_unexpected_input(value, expected):
+    assert mask_account_card(value) == expected
+
+
+def test_data(date_template):
+    assert get_date(date_template) == '11.03.2024'
