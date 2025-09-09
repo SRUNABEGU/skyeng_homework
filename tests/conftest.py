@@ -130,4 +130,6 @@ def sample_transactions():
     ]
 )
 
-
+@pytest.fixture
+def empty_list():
+    return []
