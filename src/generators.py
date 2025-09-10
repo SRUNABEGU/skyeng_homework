@@ -1,4 +1,3 @@
-
 def filter_by_currency(transactions: list, currency: str):
     """
     поочередно выдает транзакции, где валюта операции соответствует заданной
@@ -6,7 +5,11 @@ def filter_by_currency(transactions: list, currency: str):
     :param currency: валюта операции
     :return: итератор, который поочередно выдает транзакции
     """
-    result = (x for x in transactions if x.get('operationAmount', {}).get('currency', {}).get('code') == currency)
+    result = (
+        x
+        for x in transactions
+        if x.get("operationAmount", {}).get("currency", {}).get("code") == currency
+    )
     return result
 
 
@@ -16,7 +19,7 @@ def transaction_descriptions(transactions: list):
     :param transactions: список словарей с транзакциями
     :return: описание операции
     """
-    result = (x.get('description') for x in transactions)
+    result = (x.get("description") for x in transactions)
     return result
 
 
