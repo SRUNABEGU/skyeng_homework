@@ -18,11 +18,15 @@ def log(filename=None):
                     with open(filename, 'a') as file:
                         file.write(f'{report}\n')
                 print(report)
+
         return wrapper
+
     return inner
+
 
 @log('log')
 def my_function(x, y):
     return x + y
+
 
 my_function('10', 20)
