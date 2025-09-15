@@ -2,3 +2,7 @@ my_function error: TypeError. Inputs: ('10', 20), {}
 my_function ok, result is: 30
 my_function error: TypeError. Inputs: ('10', 20), {}
 my_function ok, result is: ab
+my_function error: TypeError. Inputs: ('10', 20), {}
+my_function ok, result is: 30
+my_function error: TypeError. Inputs: ('10', 20), {}
+my_function ok, result is: ab
