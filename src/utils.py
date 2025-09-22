@@ -1,9 +1,11 @@
-import os
 import json
+import os
+
 import requests
 from dotenv import load_dotenv
 
 ABSOLUTE_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'operations.json')
+
 
 def transaction_reader(path: str = ABSOLUTE_PATH) -> list:
     """
@@ -30,6 +32,7 @@ def convert_transaction_amount(transaction: dict) -> float:
     :return: возвращает сумму транзакции в рублях
     """
 
+    global result
     transaction_currency = str(transaction.get('operationAmount', {}).get('currency', {}).get('code'))
     transaction_amount = float(transaction.get('operationAmount', {}).get('amount', {}))
     load_dotenv()
@@ -40,7 +43,6 @@ def convert_transaction_amount(transaction: dict) -> float:
 
         payload = {}
         headers = {
-            # "apikey": f"{api_key}"
             "apikey": f"{os.getenv('api_key')}"
         }
 
@@ -48,22 +50,4 @@ def convert_transaction_amount(transaction: dict) -> float:
 
         status_code = response.status_code
         result = json.loads(response.text)
-        return result['result']
-    else:
-        return transaction_amount
-
-print(convert_transaction_amount({
-    "id": 41428829,
-    "state": "EXECUTED",
-    "date": "2019-07-03T18:35:29.512364",
-    "operationAmount": {
-      "amount": "8221.37",
-      "currency": {
-        "name": "USD",
-        "code": "USD"
-      }
-    },
-    "description": "Перевод организации",
-    "from": "MasterCard 7158300734726758",
-    "to": "Счет 35383033474447895560"
-  }))
+    return float(result['result'])
