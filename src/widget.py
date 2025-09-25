@@ -1,4 +1,4 @@
-from src.masks import get_mask_card_number, get_mask_account_number
+from src.masks import get_mask_account_number, get_mask_card_number
 
 
 def mask_account_card(card_inf: str) -> str:
@@ -11,9 +11,7 @@ def mask_account_card(card_inf: str) -> str:
     card_data = card_inf.split()
     if len(card_data) > 0:
         if len(card_data[1]) == 20:
-            return (
-                f"{card_data[0]} {get_mask_account_number(int(card_data[1]))}"  # Счёт
-            )
+            return f"{card_data[0]} {get_mask_account_number(int(card_data[1]))}"  # Счёт
 
         if len(card_data[1]) == 16:
             return f"{card_data[0]} {get_mask_card_number(int(card_data[1]))}"  # Карта1
