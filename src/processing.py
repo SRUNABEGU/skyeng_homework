@@ -18,7 +18,7 @@ def sort_by_date(dict_list: list[dict], reverse=False) -> list[dict]:
     """
     сортирует списки словарей по дате
     :param dict_list: список словарей
-    :param sort_metod: значение ключа
+    :param reverse: порядок сортировки
     :return: отсортированный список словарей
     """
 
