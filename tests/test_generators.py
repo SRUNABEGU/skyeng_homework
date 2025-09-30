@@ -1,10 +1,6 @@
 import pytest
 
-from src.generators import (
-    transaction_descriptions,
-    filter_by_currency,
-    card_number_generator,
-)
+from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 
 
 def test_filter_by_usd(sample_transactions):

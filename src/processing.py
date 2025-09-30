@@ -1,4 +1,4 @@
-def filter_by_state(dict_list: list[dict], state="EXECUTED") -> list[dict]:
+def filter_by_state(dict_list: list, state: str="EXECUTED") -> list:
     """
     фильтрует списки словарей по ключу "state"
     :param dict_list: список словарей
@@ -14,7 +14,7 @@ def filter_by_state(dict_list: list[dict], state="EXECUTED") -> list[dict]:
     return result
 
 
-def sort_by_date(dict_list: list[dict], reverse=False) -> list[dict]:
+def sort_by_date(dict_list: list, reverse: bool=False) -> list:
     """
     сортирует списки словарей по дате
     :param dict_list: список словарей

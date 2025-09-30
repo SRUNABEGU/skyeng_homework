@@ -1,6 +1,6 @@
 import pytest
 
-from src.widget import mask_account_card, get_date
+from src.widget import get_date, mask_account_card
 
 
 def test_maestro_card_template(maestro_template):
@@ -12,15 +12,11 @@ def test_mastercard_template(mastercard_template):
 
 
 def test_visa_classic_template(visa_classic_template):
-    assert (
-        mask_account_card(visa_classic_template) == "Visa Classic 6831 98** **** 7658"
-    )
+    assert mask_account_card(visa_classic_template) == "Visa Classic 6831 98** **** 7658"
 
 
 def test_visa_platinum_template(visa_platinum_template):
-    assert (
-        mask_account_card(visa_platinum_template) == "Visa Platinum 8990 92** **** 5229"
-    )
+    assert mask_account_card(visa_platinum_template) == "Visa Platinum 8990 92** **** 5229"
 
 
 def test_visa_gold_template(visa_gold_template):
