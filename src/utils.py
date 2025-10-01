@@ -1,12 +1,16 @@
 import json
 import logging
 import os
-from time import sleep
+from typing import Any
 
 import requests
 from dotenv import load_dotenv
 
+load_dotenv()
+API_KEY = os.getenv('API_KEY')
+
 ABSPATH_TO_FILE = os.path.join(os.path.dirname(__file__), "..", "data", "operations.json")
+ABSPATH_TO_LOG = os.path.join(os.path.dirname(__file__), "..", "logs", "utils.log")
 
 logger = logging.getLogger("utils")
 file_handler = logging.FileHandler(ABSPATH_TO_FILE, mode="w", encoding="utf-8")
@@ -36,17 +40,18 @@ def transaction_reader(path: str = ABSPATH_TO_FILE) -> list:
         return []
 
 
-def convert_transaction_amount(transaction: dict) -> float | None:
+def convert_transaction_amount(transaction: dict) -> str | float:
     """
     отдаёт сумму транзакции,
     :param transaction: принимает на вход транзакцию
     :return: возвращает сумму транзакции в рублях
     """
-    transaction_currency = str(transaction.get("operationAmount", {}).get("currency", {}).get("code"))
-    transaction_amount = transaction.get("operationAmount", {}).get("amount", {})
-    load_dotenv()
-    logger.debug("Получение API ключа")
-    if transaction.get("operationAmount", {}).get("currency", {}).get("code") in ("USD", "EUR"):
+    try:
+        print('Выполняется запрос...')
+        transaction_currency = str(transaction.get("operationAmount", {}).get("currency", {}).get("code"))
+        transaction_amount = transaction.get("operationAmount", {}).get("amount", {})
+        if transaction_currency not in ("USD", "EUR"):
+            return float(transaction_amount)
         url = (
             f"https://api.apilayer.com/exchangerates_data/convert?to=RUB&"
             f"from={transaction_currency}&amount={transaction_amount}"
@@ -57,7 +62,11 @@ def convert_transaction_amount(transaction: dict) -> float | None:
         logger.debug(f"Запрос к API с конвертацией {transaction_amount} {transaction_currency} в рубли")
         result = json.loads(response.text)
         logger.debug(f'Успешная работа функции, результат: {result["result"]} рублей')
-    return float(result["result"])
+        return float(result["result"])
+
+    except Exception as error:
+            logger.error(f'Ошибка: {error}')
+            return f'Ошибка: {error}'
 
 
 print(
