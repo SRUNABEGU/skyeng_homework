@@ -6,7 +6,7 @@ import requests
 from dotenv import load_dotenv
 
 load_dotenv()
-API_KEY = os.getenv('API_KEY')
+API_KEY = os.getenv("API_KEY")
 
 ABSPATH_TO_FILE = os.path.join(os.path.dirname(__file__), "..", "data", "operations.json")
 ABSPATH_TO_LOG = os.path.join(os.path.dirname(__file__), "..", "logs", "utils.log")
@@ -46,7 +46,7 @@ def convert_transaction_amount(transaction: dict) -> str | float:
     :return: возвращает сумму транзакции в рублях
     """
     try:
-        print('Выполняется запрос...')
+        print("Выполняется запрос...")
         transaction_currency = str(transaction.get("operationAmount", {}).get("currency", {}).get("code"))
         transaction_amount = transaction.get("operationAmount", {}).get("amount", {})
         if transaction_currency not in ("USD", "EUR"):
@@ -64,8 +64,8 @@ def convert_transaction_amount(transaction: dict) -> str | float:
         return float(result["result"])
 
     except Exception as error:
-        logger.error(f'Ошибка: {error}')
-        return f'Ошибка: {error}'
+        logger.error(f"Ошибка: {error}")
+        return f"Ошибка: {error}"
 
 
 print(
