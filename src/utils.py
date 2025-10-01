@@ -48,7 +48,7 @@ def convert_transaction_amount(transaction: dict) -> str | float:
     try:
         print("Выполняется запрос...")
         transaction_currency = str(transaction.get("operationAmount", {}).get("currency", {}).get("code"))
-        transaction_amount = transaction.get("operationAmount", {}).get("amount", {})
+        transaction_amount = transaction.get("operationAmount", {}).get("amount", '0')
         if transaction_currency not in ("USD", "EUR"):
             return float(transaction_amount)
         url = (
