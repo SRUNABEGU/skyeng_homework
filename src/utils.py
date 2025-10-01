@@ -64,8 +64,8 @@ def convert_transaction_amount(transaction: dict) -> str | float:
         return float(result["result"])
 
     except Exception as error:
-            logger.error(f'Ошибка: {error}')
-            return f'Ошибка: {error}'
+        logger.error(f'Ошибка: {error}')
+        return f'Ошибка: {error}'
 
 
 print(
