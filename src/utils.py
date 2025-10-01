@@ -1,6 +1,7 @@
 import json
 import logging
 import os
+from time import sleep
 
 import requests
 from dotenv import load_dotenv
@@ -44,16 +45,18 @@ def convert_transaction_amount(transaction: dict) -> float | None:
     transaction_currency = str(transaction.get("operationAmount", {}).get("currency", {}).get("code"))
     transaction_amount = transaction.get("operationAmount", {}).get("amount", {})
     load_dotenv()
-    api_key = os.getenv("api_key")
     logger.debug("Получение API ключа")
     if transaction.get("operationAmount", {}).get("currency", {}).get("code") in ("USD", "EUR"):
-        url = f"https://api.apilayer.com/exchangerates_data/convert?to=RUB&from={transaction_currency}&amount={transaction_amount}"
+        url = (
+            f"https://api.apilayer.com/exchangerates_data/convert?to=RUB&"
+            f"from={transaction_currency}&amount={transaction_amount}"
+        )
         payload = {}
-        headers = {"apikey": f"{os.getenv('api_key')}"}
+        headers = {"apikey": f"{os.getenv('API_KEY')}"}
         response = requests.request("GET", url, headers=headers, data=payload)
         logger.debug(f"Запрос к API с конвертацией {transaction_amount} {transaction_currency} в рубли")
         result = json.loads(response.text)
-    logger.debug(f'Успешная работа функции, результат: {result["result"]} рублей')
+        logger.debug(f'Успешная работа функции, результат: {result["result"]} рублей')
     return float(result["result"])
 
 
