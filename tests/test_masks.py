@@ -1,6 +1,6 @@
 import pytest
 
-from src.masks import get_mask_card_number, get_mask_account_number
+from src.masks import get_mask_account_number, get_mask_card_number
 
 
 def test_correct_card_number_mask(card_number):

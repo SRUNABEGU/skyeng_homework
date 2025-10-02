@@ -62,10 +62,10 @@
         <p class="text">
             <a id="prevFileLink" class="nav" href="z_145eef247bfb46b6_masks_py.html">&#xab; prev</a> &nbsp; &nbsp;
             <a id="indexLink" class="nav" href="index.html">&Hat; index</a> &nbsp; &nbsp;
-            <a id="nextFileLink" class="nav" href="z_145eef247bfb46b6_widget_py.html">&#xbb; next</a>
+            <a id="nextFileLink" class="nav" href="z_145eef247bfb46b6_utils_py.html">&#xbb; next</a>
             &nbsp; &nbsp; &nbsp;
             <a class="nav" href="https://coverage.readthedocs.io/en/7.10.6">coverage.py v7.10.6</a>,
-            created at 2025-09-16 02:57 +0800
+            created at 2025-09-30 18:36 +0800
         </p>
         <aside class="hidden">
             <button type="button" class="button_next_chunk" data-shortcut="j"></button>
@@ -80,7 +80,7 @@
     </div>
 </header>
 <main id="source">
-    <p class="run"><span class="n"><a id="t1" href="#t1">1</a></span><span class="t"><span class="key">def</span> <span class="nam">filter_by_state</span><span class="op">(</span><span class="nam">dict_list</span><span class="op">:</span> <span class="nam">list</span><span class="op">[</span><span class="nam">dict</span><span class="op">]</span><span class="op">,</span> <span class="nam">state</span><span class="op">=</span><span class="str">"EXECUTED"</span><span class="op">)</span> <span class="op">-></span> <span class="nam">list</span><span class="op">[</span><span class="nam">dict</span><span class="op">]</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t1" href="#t1">1</a></span><span class="t"><span class="key">def</span> <span class="nam">filter_by_state</span><span class="op">(</span><span class="nam">dict_list</span><span class="op">:</span> <span class="nam">list</span><span class="op">,</span> <span class="nam">state</span><span class="op">:</span> <span class="nam">str</span><span class="op">=</span><span class="str">"EXECUTED"</span><span class="op">)</span> <span class="op">-></span> <span class="nam">list</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t2" href="#t2">2</a></span><span class="t">    <span class="str">"""</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t3" href="#t3">3</a></span><span class="t"><span class="str">    &#1092;&#1080;&#1083;&#1100;&#1090;&#1088;&#1091;&#1077;&#1090; &#1089;&#1087;&#1080;&#1089;&#1082;&#1080; &#1089;&#1083;&#1086;&#1074;&#1072;&#1088;&#1077;&#1081; &#1087;&#1086; &#1082;&#1083;&#1102;&#1095;&#1091; "state"</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t4" href="#t4">4</a></span><span class="t"><span class="str">    :param dict_list: &#1089;&#1087;&#1080;&#1089;&#1086;&#1082; &#1089;&#1083;&#1086;&#1074;&#1072;&#1088;&#1077;&#1081;</span>&nbsp;</span><span class="r"></span></p>
@@ -96,11 +96,11 @@
     <p class="run"><span class="n"><a id="t14" href="#t14">14</a></span><span class="t">    <span class="key">return</span> <span class="nam">result</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t15" href="#t15">15</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t16" href="#t16">16</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
-    <p class="run"><span class="n"><a id="t17" href="#t17">17</a></span><span class="t"><span class="key">def</span> <span class="nam">sort_by_date</span><span class="op">(</span><span class="nam">dict_list</span><span class="op">:</span> <span class="nam">list</span><span class="op">[</span><span class="nam">dict</span><span class="op">]</span><span class="op">,</span> <span class="nam">reverse</span><span class="op">=</span><span class="key">False</span><span class="op">)</span> <span class="op">-></span> <span class="nam">list</span><span class="op">[</span><span class="nam">dict</span><span class="op">]</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t17" href="#t17">17</a></span><span class="t"><span class="key">def</span> <span class="nam">sort_by_date</span><span class="op">(</span><span class="nam">dict_list</span><span class="op">:</span> <span class="nam">list</span><span class="op">,</span> <span class="nam">reverse</span><span class="op">:</span> <span class="nam">bool</span><span class="op">=</span><span class="key">False</span><span class="op">)</span> <span class="op">-></span> <span class="nam">list</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t18" href="#t18">18</a></span><span class="t">    <span class="str">"""</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t19" href="#t19">19</a></span><span class="t"><span class="str">    &#1089;&#1086;&#1088;&#1090;&#1080;&#1088;&#1091;&#1077;&#1090; &#1089;&#1087;&#1080;&#1089;&#1082;&#1080; &#1089;&#1083;&#1086;&#1074;&#1072;&#1088;&#1077;&#1081; &#1087;&#1086; &#1076;&#1072;&#1090;&#1077;</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t20" href="#t20">20</a></span><span class="t"><span class="str">    :param dict_list: &#1089;&#1087;&#1080;&#1089;&#1086;&#1082; &#1089;&#1083;&#1086;&#1074;&#1072;&#1088;&#1077;&#1081;</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t21" href="#t21">21</a></span><span class="t"><span class="str">    :param sort_metod: &#1079;&#1085;&#1072;&#1095;&#1077;&#1085;&#1080;&#1077; &#1082;&#1083;&#1102;&#1095;&#1072;</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t21" href="#t21">21</a></span><span class="t"><span class="str">    :param reverse: &#1087;&#1086;&#1088;&#1103;&#1076;&#1086;&#1082; &#1089;&#1086;&#1088;&#1090;&#1080;&#1088;&#1086;&#1074;&#1082;&#1080;</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t22" href="#t22">22</a></span><span class="t"><span class="str">    :return: &#1086;&#1090;&#1089;&#1086;&#1088;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1085;&#1099;&#1081; &#1089;&#1087;&#1080;&#1089;&#1086;&#1082; &#1089;&#1083;&#1086;&#1074;&#1072;&#1088;&#1077;&#1081;</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t23" href="#t23">23</a></span><span class="t"><span class="str">    """</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t24" href="#t24">24</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
@@ -111,10 +111,10 @@
         <p>
             <a class="nav" href="z_145eef247bfb46b6_masks_py.html">&#xab; prev</a> &nbsp; &nbsp;
             <a class="nav" href="index.html">&Hat; index</a> &nbsp; &nbsp;
-            <a class="nav" href="z_145eef247bfb46b6_widget_py.html">&#xbb; next</a>
+            <a class="nav" href="z_145eef247bfb46b6_utils_py.html">&#xbb; next</a>
             &nbsp; &nbsp; &nbsp;
             <a class="nav" href="https://coverage.readthedocs.io/en/7.10.6">coverage.py v7.10.6</a>,
-            created at 2025-09-16 02:57 +0800
+            created at 2025-09-30 18:36 +0800
         </p>
     </div>
 </footer>
