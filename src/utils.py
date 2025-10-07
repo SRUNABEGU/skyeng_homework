@@ -19,7 +19,7 @@ logger.addHandler(file_handler)
 logger.setLevel(logging.DEBUG)
 
 
-def transaction_reader(path: str = ABSPATH_TO_FILE) -> list:
+def json_file_reader(path: str = ABSPATH_TO_FILE) -> list:
     """
     читает файл в формате .JSON
     :param path: принимает на вход путь до JSON-файла
@@ -32,7 +32,7 @@ def transaction_reader(path: str = ABSPATH_TO_FILE) -> list:
                 logger.error("Содержимое файла не является списком")
                 return []
             logger.debug("Файл успешно найден")
-            return data[0].get("operationAmount", {}).get("currency", {}).get("code")
+            return data
 
     except (json.JSONDecodeError, FileNotFoundError, Exception) as error:
         logger.error(f"Ошибка {error}")
@@ -66,18 +66,3 @@ def convert_transaction_amount(transaction: dict) -> str | float:
     except Exception as error:
         logger.error(f"Ошибка: {error}")
         return f"Ошибка: {error}"
-
-
-print(
-    convert_transaction_amount(
-        {
-            "id": 41428829,
-            "state": "EXECUTED",
-            "date": "2019-07-03T18:35:29.512364",
-            "operationAmount": {"amount": "8221.37", "currency": {"name": "USD", "code": "USD"}},
-            "description": "Перевод организации",
-            "from": "MasterCard 7158300734726758",
-            "to": "Счет 35383033474447895560",
-        }
-    )
-)
