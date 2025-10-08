@@ -30,7 +30,3 @@ def xlsx_reader(path: str = ABSPATH_TO_XLSX) -> list:
     df = pd.read_excel(path)
     result = df.to_dict("records")
     return result
-
-
-# print(csv_reader())
-# print(xlsx_reader())

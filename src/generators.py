@@ -5,8 +5,7 @@ def filter_by_currency(transactions: list, currency: str):
     :param currency: валюта операции
     :return: итератор, который поочередно выдает транзакции
     """
-    result = (x for x in transactions if x.get("operationAmount", {}).get("currency", {}).get("code") == currency)
-    return result
+    return (x for x in transactions if x.get("operationAmount", {}).get("currency", {}).get("code") == currency)
 
 
 def transaction_descriptions(transactions: list):
